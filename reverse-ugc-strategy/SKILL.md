@@ -58,9 +58,12 @@ Call `view_brand` with the name, or the `url` if the user gave a link. Keep the 
 accounts, `daily_history`, `web_visits_by_month`, `pain_points`, `hook_formulas`, `concepts`, `content_mix`,
 `top_videos`, `niche_brands`, `similar_brands`, and the taxonomy under `brand`.
 
-If it answers `not_tracked` (or no farm accounts): stop. Say Farmspot does not track this app's farm yet, show the
-closest tracked brands it returned, offer to run the report on one of them, and give the link to request the brand
-(https://www.farmspot.ai/brands, "Request a brand"). Never build a report on an app without a farm.
+If it answers `not_tracked` (or no farm accounts): no report. Call `live_search` once with the app's name (`product`
+and `about` from the look-up): it searches TikTok now and sends the accounts pitching the app to Farmspot's pipeline.
+Say Farmspot does not track this app's farm yet, show in a short table what TikTok has live (the new accounts that
+pitch it, their videos and views as of now; never outlier rates or trends from them), say how many accounts were sent
+to Farmspot and that the report can run once they are tracked (a day or two). Then show the closest tracked brands
+view_brand returned and offer the report on one of them. Never build a report on an app without a farm.
 
 ### 3. Collect the rest
 
