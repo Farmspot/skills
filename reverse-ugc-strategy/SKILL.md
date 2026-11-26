@@ -44,8 +44,10 @@ Call `my_account`. It costs no call. Read:
 - `plan`: **Growth** → full mode. Anything else (Free, Pro) → free mode. Their searches return at most 25 rows,
   and their calls are limited: `mcp_calls.left`.
 - `workspace.products`: the user's own app (the `active` one). The playbook is written for it. If there is none,
-  ask once: "Which app should the playbook be written for? (a name or a link; or skip)". Skip means a generic playbook.
-- `workspace.competitors`: mention them at the end as next runs.
+  ask once: "Which app should the playbook be written for? Send its link and I'll save it to your workspace (or
+  skip)". With a link, call `edit_workspace` with `add_product` and `url` (no MCP call) and use it; a name only is
+  used for this run. Skip means a generic playbook.
+- `workspace.competitors`: mention them at the end as next runs, and `/rival-digest` for a weekly view of them.
 
 Tell the user the mode and the cost before spending: full mode uses 13 calls (two of them `sql`), free mode 5. If fewer calls are
 left than the mode needs, say so and stop.

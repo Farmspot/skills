@@ -21,7 +21,10 @@ show what the data says about this app, not a checklist.
             "category": "Stores & dropshipping", "niche": "AI store builder", "generated_at": "2026-11-25T01:00:00Z",
             "range": { "from": "2026-05-25", "to": "2026-11-24" }, "mode": "full",      // "full" | "free"
             "partial_note": "Free calls read 25 rows a search: …",                      // free mode
-            "sources": ["Farmspot", "Similarweb (via Farmspot)"], "calls_used": 12 },
+            "sources": ["Farmspot", "Similarweb (via Farmspot)"], "calls_used": 12,
+            "kicker": "Reverse-engineered UGC strategy", "title_suffix": ": how the farm works",
+            "skill": "/reverse-ugc-strategy" },  // the command named in the footer  // the label above
+                                                                     // the title, and what follows the brand in it
   "verdict": { "text": "A **volume farm**: …", "tiles": [ tile, … ] },                 // 4 to 6 tiles
   "sections": [ { "kicker": "Part 1 · Timeline", "title": "the finding", "insight": "one line",
                   "blocks": [ … ], "locked": "free mode: what Growth adds here, one line" } ],
@@ -42,7 +45,7 @@ Every block takes `title`, `insight`, `source` (the call it came from), and `wid
 
 | type | fields | use it for |
 |---|---|---|
-| `panels` | `panels: [{name, unit, kind, agg, points: [{date, value, label, highlight}], tracked_from, tone, highlight, source}]`, `markers: [{date, label}]`, `from`, `to`, `shared_scale`, `panel_height`, `note` | **the timeline.** One measure per panel, stacked on one week axis with its own y axis, the last full week and its 4-week change at the right, one hover line through all panels. `kind`: `bars` (counts), `line` (levels), `step` (a monthly figure), `dots` (one dot per row: accounts starting), `spans` (`rows: [{name, cover, link, first_seen, last_seen, videos, hits, points: [{date, value, hits}]}]`: one row per concept or hook formula, its cover, a line from its first to its last video, a dot per week sized by its videos, lime when half or more hit). `agg`: `sum`, `count`, `last`, `max`, `diff` (weekly gain of a running count, such as App Store ratings). `tracked_from`: earlier weeks show "not tracked", never 0. With `shared_scale: true` and one panel per brand it compares competitors on the same scale (`highlight: true` on the app). |
+| `panels` | `panels: [{name, unit, kind, agg, points: [{date, value, label, highlight}], tracked_from, tone, highlight, source}]`, `markers: [{date, label}]`, `from`, `to`, `shared_scale`, `complete` (every point is already a full 7 days: the current week is not hatched), `panel_height`, `note` | **the timeline.** One measure per panel, stacked on one week axis with its own y axis, the last full week and its 4-week change at the right, one hover line through all panels. `kind`: `bars` (counts), `line` (levels), `step` (a monthly figure), `dots` (one dot per row: accounts starting), `spans` (`rows: [{name, cover, link, first_seen, last_seen, videos, hits, points: [{date, value, hits}]}]`: one row per concept or hook formula, its cover, a line from its first to its last video, a dot per week sized by its videos, lime when half or more hit). `agg`: `sum`, `count`, `last`, `max`, `diff` (weekly gain of a running count, such as App Store ratings). `tracked_from`: earlier weeks show "not tracked", never 0. With `shared_scale: true` and one panel per brand it compares competitors on the same scale (`highlight: true` on the app). |
 | `tiles` | `items: [tile]` | headline figures inside a section (the verdict has its own) |
 | `dots` | `rows: [{name, note, format: "pct", log, values: [{name, value, self}]}]` | the app against every brand of its niche, one row per measure, with its rank; log scale by default when values spread past 50× |
 | `curve` | `rows: [{name, value}]`, `marks: [1, 3, 10]`, `x_label` | concentration: cumulative share of views by accounts, biggest first; says how many make half |
@@ -51,7 +54,8 @@ Every block takes `title`, `insight`, `source` (the call it came from), and `wid
 | `share` | `rows: [{name, value, link}]`, `top` | one split: views by language, persona, presenter |
 | `matrix` | `cells: [{row, col, value, label, n}]`, `rows`, `cols`, `scale: "rate"`, `self` | competitors × format |
 | `covers` | `videos: [video]` | best videos, a niche's winners |
-| `breakdown` | `video`, `duration_s`, `beats: [{start, end, label, text}]` | one winner on its own timeline (label "App reveal" is drawn lime, "Hook" pink) |
+| `breakdown` | `video`, `duration_s`, `beats: [{start, end, label, text}]`, `brief: [{label, value}]`, `copy` | one winner on its own timeline (a label with "app" or "reveal" is drawn lime, "Hook" pink); `brief` adds label/value rows under it, `copy` a text to copy (a creator brief) |
+| `hooks` | `items: [{formula, n, hits, median, original, link, handle, views, yours: [text]}]` | hooks to steal: the formula, its best original as written, and versions for the user's app, each with a copy button |
 | `formulas` | `items: [{template, videos, hits, median, top_video}]` | hook formulas and concepts with [slots] |
 | `actions` | `items: [{title, why, evidence, start, effort, watch, prompt}]` | the playbook |
 | `notes` | `items: [{date, text, tag, link}]` | 2 to 4 dated moments, or the things to skip |
